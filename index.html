@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div id="navigation" class="navigation">
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Trabalho</a></li>
+                <li><a href="#">Contato</a></li>
+                <li id="threeline" class="threeline" onclick="openNav()">&#9776;</li>
+            </ul>
+        </div>
+    </header>
+
+    <section>
+        <img src="img/stars.png" id="stars" alt="stars">
+        <img src="img/moon.png" id="moon" alt="moon">
+        <img src="img/mountains_behind.png" id="mountains_behind" alt="mountains_behind">
+        <h2 id="text">Bem-Vindo(a)</h2>
+        <a href="#sec" id="btn">Veja Mais</a>
+        <img src="img/mountains_front.png" id="mountains_front" alt="mountains_front">
+    </section>
+    <div class="sec" id="sec">
+        <h2>Efeito Parallax</h2>
+        <p>O efeito parallax é uma técnica de web design que faz com que uma imagem de fundo se movimente de forma mais
+            lenta que outras imagens à frente. Isso gera um efeito 3D conforme o usuario navega pela página, criando
+            desse jeito uma sensação de profundidade.<br><br> O efeito paralax é baseado em uma ilusão de ótica, pois o
+            olho humano supõe que os objetos que estão perto são maiores em comparação com os que estão afastados.
+            <br><br>
+            Essa aplicação web, tem como objetivo o aprendizado de fundamentos de <strong>HTML5</strong>,
+            <strong>CSS3</strong>, <strong>JavaScript</strong> e o <strong>Efeito Parallax</strong>.
+            Para o desenvolvimento dessa aplicação, foi utilizado como base o vídeo: <a
+                href="https://www.youtube.com/watch?v=1wfeqDyMUx4&t=460s&ab_channel=OnlineTutorials" target="_blank">
+                <em>Parallax Scrolling Website | How to Make Website using Html CSS & Javascript</em></a> do canal: <a
+                href="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blank"><em>Online
+                    Tutorials.</em></a>
+            <br>
+            <br>
+            Image Source & Attribution
+            Source : <a href="https://www.freepik.com/home" target="_blank">freepik</a>
+            Star vector created by upklyak: <a
+                href="https://www.freepik.com/free-vector/mountains-cleft-view-from-bottom-night-scenery-landscape-with-high-rocks-full-moon-with-stars-glowing-peaks_13194970.htm#page=1&query=Scene&position=38"
+                target="_blank">Imagens de fundo</a>
+        </p>
+    </div>
+
+    <script>
+        let stars = document.getElementById('stars');
+        let moon = document.getElementById('moon');
+        let mountains_behind = document.getElementById('mountains_behind');
+        let text = document.getElementById('text');
+        let btn = document.getElementById('btn');
+        let mountains_front = document.getElementById('mountains_front');
+        let header = document.querySelector('header');
+
+        window.addEventListener('scroll', function () {
+            let value = window.scrollY;
+            stars.style.left = value * 0.25 + 'px';
+            moon.style.top = value * 1.05 + 'px';
+            mountains_behind.style.top = value * 0.5 + 'px';
+            mountains_front.style.top = value * 0 + 'px';
+            text.style.marginRight = value * 4 + 'px';
+            text.style.marginTop = value * 1.5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            header.style.top = value * 0.5 + 'px';
+        })
+
+        function openNav() {
+            var x = document.getElementById("navigation");
+
+            if (x.className === "navigation") {
+                x.className += " menujs";
+                document.getElementById("threeline").innerHTML = "&Cross;";
+            } else {
+                x.className = "navigation";
+                document.getElementById("threeline").innerHTML = "&#9776;";
+            }
+        }
+    </script>
+</body>
+
+</html>
